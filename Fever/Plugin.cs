@@ -8,6 +8,8 @@ using IPA.Config.Stores;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using IPALogger = IPA.Logging.Logger;
+using SiraUtil.Zenject;
+using Fever.Installeres;
 
 namespace Fever
 {
@@ -24,11 +26,12 @@ namespace Fever
         /// [Init] methods that use a Constructor or called before regular methods like InitWithConfig.
         /// Only use [Init] with one Constructor.
         /// </summary>
-        public void Init(IPALogger logger)
+        public void Init(IPALogger logger, Zenjector zenjector)
         {
             Instance = this;
             Log = logger;
             Log.Info("Fever initialized.");
+            zenjector.OnGame<GameInstaller>();
         }
 
         #region BSIPA Config

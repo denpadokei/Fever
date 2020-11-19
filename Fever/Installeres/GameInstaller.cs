@@ -12,7 +12,8 @@ namespace Fever.Installeres
     {
         public override void InstallBindings()
         {
-            this.Container.BindInterfacesAndSelfTo<FeverController>().FromNewComponentOnNewGameObject().AsSingle();
+            this.Container.BindInterfacesAndSelfTo<FeverModeUIPanel>().FromNewComponentOnNewGameObject().AsCached();
+            this.Container.BindInterfacesAndSelfTo<FeverController>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
         }
     }
 }

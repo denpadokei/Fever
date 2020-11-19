@@ -19,10 +19,18 @@ namespace Fever
     {
         [Inject]
         ScoreController controller;
+        [Inject]
+        FeverModeUIPanel panel;
 
         public void Initialize()
         {
-            this.controller.SetField("_feverModeRequiredCombo", 20);
+            try {
+                this.controller.SetField("_feverModeRequiredCombo", 20);
+                Plugin.Log.Debug($"{panel.GetField<RectTransform, FeverModeUIPanel>("_feverBGTextRectTransform").sizeDelta}");
+            }
+            catch (Exception e) {
+                Plugin.Log.Error(e);
+            }
         }
 
         // These methods are automatically called by Unity, you should remove any you aren't using.
